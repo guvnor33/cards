@@ -13,7 +13,8 @@ let swordsman = new Unit('swordsman', 'military');
 let archer = new Unit('archer', 'military');
 let horseman = new Unit('horseman', 'military');
 
-const military = ['swordsman','archer','catapult'];
+// const military = ['swordsman','archer','catapult'];
+const military = [swordsman, archer, horseman];
 const academics = ['scribe','monk','researcher','librarian','scientist', 'AI'];
 
 const snd = new Audio("sounds/zapsplat_leisure_board_game_telstrations_game_card_remove_slide_out_from_pile_stack_001_52290.wav"); // buffers automatically when created
@@ -31,12 +32,12 @@ function addMilitary() {
   military.forEach(unit => {
     const militaryCard = document.createElement('div');
     militaryCard.classList.add('military-card');
-    militaryCard.innerHTML = unit;
-    militaryCard.setAttribute(`unitType`, unit);
+    militaryCard.innerHTML = unit.name + ': ' + unit.numberOwned;
+    militaryCard.setAttribute(`unitType`, unit.name);
     column.append(militaryCard);
     //militaryCard.addEventListener('click',buyUnit);
     militaryCard.addEventListener("click", function() {
-      buyUnit(unit);
+      buyUnit(unit, militaryCard);
     });
     // militaryCard.addEventListener('mouseover', this.className='hover');
     militaryCard.addEventListener('mouseover', addHover);
@@ -45,15 +46,18 @@ function addMilitary() {
   })
 }
 
-function buyUnit(unit){
-  console.log('Clicked.' + unit);
-  if (unit === 'swordsman') {
-    numSwordsman += 1;
-    this.innerHTML = unit + ': ' + numSwordsman;
-  }
-  if (unit === 'archer') { numArcher += 1; }
-  if (unit === 'catapult') { numCatapult += 1; }
-  console.log('Swordsmen: ' + numSwordsman + ' Archers: ' + numArcher + ' Catapults: ' + numCatapult);
+function buyUnit(unit, card){
+  console.log('Clicked.' + unit.name);
+  unit.numberOwned += 1;
+  card.innerHTML = unit.name + ': ' + unit.numberOwned;
+ // if (unit === 'swordsman') {
+ //   numSwordsman += 1;
+ //   this.innerHTML = unit + ': ' + numSwordsman;
+ // }
+ // if (unit === 'archer') { numArcher += 1; }
+ // if (unit === 'catapult') { numCatapult += 1; }
+  // console.log('Swordsmen: ' + numSwordsman + ' Archers: ' + numArcher + ' Catapults: ' + numCatapult);
+  console.log(unit.name + ' owned: ' + unit.numberOwned)
 
 }
 function addHover(){
