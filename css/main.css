@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: darkgray;
+  color: lightgray;
+  display: flex;
+  justify-content: center;
+  font-family: "Agency FB";
+  align-items: center;
+  flex-direction: column;
+
+}
+.military-column{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.military-card{
+  width: 200px;
+  height: 120px;
+  border-radius: 20px;
+  background-color: rgb(69, 69, 78);
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+  box-shadow: 3px 6px #3a2b2b;
+
+}
+
+.hover {
+  position: relative;
+  top: -5px; /* this will raise the element */
+  background-color: rgb(103, 103, 115);
+}
+
